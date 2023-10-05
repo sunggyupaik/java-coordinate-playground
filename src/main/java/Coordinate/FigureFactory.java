@@ -5,19 +5,26 @@ import java.util.List;
 import java.util.Map;
 
 public class FigureFactory {
-	static Figure getInstance(List<Point> points) {
-		if (points.size() == Line.LINE_POINT_SIZE) {
-			return new Line(points);
+	private static final Map<Figure, List<Point>> map = new HashMap<>();
+
+	static Figure create(List<Point> points) {
+		if(points == null) {
+			throw new IllegalArgumentException("올바른 Point 가 아닙니다.");
 		}
 
-		if (points.size() == Triangle.TRIANGLE_POINT_SIZE) {
-			return new Triangle(points);
+		if(points.size() < 2 || points.size() > 4) {
+			throw new IllegalArgumentException("입력된 Point 갯수가 올바르지 않습니다.");
 		}
 
-		if (points.size() == Rectangle.RECTANGLE_POINT_SIZE) {
-			return new Rectangle(points);
+		if(map.size() == 0) {
+			map.put(new Line(points), points);
+			map.put(new Rectangle(points), points);
+			map.put(new Triangle(points), points);
 		}
 
-		throw new IllegalArgumentException("유효하지 않은 도형입니다.");
+		return map.keySet().stream()
+				.filter(figure -> figure.size() == points.size())
+				.findAny()
+				.orElseThrow(IllegalArgumentException::new);
 	}
 }

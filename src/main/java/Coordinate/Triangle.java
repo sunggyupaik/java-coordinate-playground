@@ -23,13 +23,4 @@ public class Triangle extends AbstractFigure {
 	public double area() {
 		return 0;
 	}
-
-	@Override
-	public Figure create(List<Point> points) {
-		if(points.size() == Triangle.TRIANGLE_POINT_SIZE) {
-			return new Triangle(points);
-		}
-
-		throw new IllegalArgumentException("유효하지 않은 도형입니다.");
-	}
 }
