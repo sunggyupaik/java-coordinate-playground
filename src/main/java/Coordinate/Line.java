@@ -21,6 +21,9 @@ public class Line extends AbstractFigure {
 
 	@Override
 	public double area() {
-		return 0;
+		Point point1 = getPoints().get(0);
+		Point point2 = getPoints().get(1);
+
+		return point1.getDistance(point2);
 	}
 }

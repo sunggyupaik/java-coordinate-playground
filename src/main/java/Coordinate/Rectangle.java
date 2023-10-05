@@ -21,6 +21,14 @@ public class Rectangle extends AbstractFigure {
 
 	@Override
 	public double area() {
-		return 0;
+		Point point1 = getPoints().get(0);
+		Point point2 = getPoints().get(1);
+		Point point3 = getPoints().get(2);
+		Point point4 = getPoints().get(3);
+
+		int width = Math.max(Math.abs(point1.getX() - point2.getX()), Math.abs(point1.getX() - point3.getX()));
+		int height = Math.max(Math.abs(point1.getY() - point2.getY()), Math.abs(point1.getY() - point3.getY()));
+
+		return width * height;
 	}
 }

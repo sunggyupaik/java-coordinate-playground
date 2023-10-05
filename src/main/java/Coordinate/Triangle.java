@@ -21,6 +21,14 @@ public class Triangle extends AbstractFigure {
 
 	@Override
 	public double area() {
-		return 0;
+		Point point1 = getPoints().get(0);
+		Point point2 = getPoints().get(1);
+		Point point3 = getPoints().get(2);
+
+		double a = Math.sqrt(Math.pow(point1.getX() - point2.getX(), 2) + Math.pow(point1.getY() - point2.getY(), 2));
+		double b = Math.sqrt(Math.pow(point1.getX() - point3.getX(), 2) + Math.pow(point1.getY() - point3.getY(), 2));
+		double c = Math.sqrt(Math.pow(point2.getX() - point3.getX(), 2) + Math.pow(point2.getY() - point3.getY(), 2));
+
+		return Math.sqrt((a + b + c) * (-a + b + c) * (a - b + c) * (a + b -c)) / 4;
 	}
 }
