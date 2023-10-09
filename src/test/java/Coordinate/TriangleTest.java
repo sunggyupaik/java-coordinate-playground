@@ -9,10 +9,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
 
-public class LineTest {
+public class TriangleTest {
 	private List<Point> points;
 	private Point point1;
 	private Point point2;
+	private Point point3;
 
 	@BeforeEach
 	void setUp() {
@@ -20,14 +21,17 @@ public class LineTest {
 
 		point1 = new Point(10, 10);
 		point2 = new Point(14, 15);
+		point3 = new Point(20, 8);
+
 		points.add(point1);
 		points.add(point2);
+		points.add(point3);
 	}
 
 	@Test
-	void lineAreaTest() {
-		Line line = new Line(points);
+	void triangleAreaTest() {
+		Triangle triangle = new Triangle(points);
 
-		assertThat(line.area()).isEqualTo(6.403124, offset(0.00099));
+		assertThat(triangle.area()).isEqualTo(29.0d, offset(0.00099));
 	}
 }
