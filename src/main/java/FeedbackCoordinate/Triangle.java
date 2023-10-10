@@ -36,6 +36,6 @@ public class Triangle extends AbstractFigure {
 	private double calculateAreaWithHeronFormula(double firstSide, double secondSide, double thirdSide) {
 		double s = (firstSide + secondSide + thirdSide) / 2;
 
-		return Math.sqrt(s * (s-firstSide) * (s-secondSide) * (s-thirdSide))/2;
+		return Math.sqrt(s * (s-firstSide) * (s-secondSide) * (s-thirdSide));
 	}
 }
